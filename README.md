@@ -5,13 +5,13 @@
 totp。
 
 ## 流程
-1.客户端从服务器获得token以（https传输）。
-2.生成付款码时，获取token以及当前时间戳，totp(token+UnixTimestamp),转换为byte[]并截取指定长度后转换为int变量otp。
-3.id 根据后面付款码组成不同为不同值。
-4.使用otp对id 进行异或（根据自己需要选择其他混淆算法，混淆因子必须为otp） 得到enId,code = enid 拼上otp。
-5.服务器获取付款码后，反向解码，拿到otp，id。
-6.通过id找到token，在当前时间戳前后n个周期里运算otp[],只要otp包含在otp[]，及验证通过，然后通过cardId进行付款。
-7.token通过一定策略进行更新，如限定使用次数、有效期等。
+1. 客户端从服务器获得token以（https传输）。
+2. 生成付款码时，获取token以及当前时间戳，totp(token+UnixTimestamp),转换为byte[]并截取指定长度后转换为int变量otp。
+3. id 根据后面付款码组成不同为不同值。
+4. 使用otp对id 进行异或（根据自己需要选择其他混淆算法，混淆因子必须为otp） 得到enId,code = enid 拼上otp。
+5. 服务器获取付款码后，反向解码，拿到otp，id。
+6. 通过id找到token，在当前时间戳前后n个周期里运算otp[],只要otp包含在otp[]，及验证通过，然后通过cardId进行付款。
+7. token通过一定策略进行更新，如限定使用次数、有效期等。
 ## 付款码组成
 18位数字
 前两位付款用途，支付宝28等
